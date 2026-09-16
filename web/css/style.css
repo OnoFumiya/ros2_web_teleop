@@ -1,0 +1,167 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: black;
+}
+
+
+/* 画面全体 */
+#gui {
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background: black;
+}
+
+
+/* 仮想GUIキャンバス */
+#canvas {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width:   585px;
+    height: 1239px;
+
+    transform-origin: top left;
+}
+
+
+/* 背景画像 */
+#background {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width:   585px;
+    height: 1239px;
+
+    display: block;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* 接続状態 */
+#connection-status {
+    position: absolute;
+
+    left: 20px;
+    top: 20px;
+
+    font-size: 20px;
+
+    color: white;
+}
+
+
+/* ジョイスティック */
+#joystick {
+    position: absolute;
+
+    /* 仮の位置 */
+    left: 135px;
+    top: 764px;
+}
+
+
+/* ジョイスティック台 */
+#joystick-base {
+    position: relative;
+
+    width: 315px;
+    height: 315px;
+
+    border-radius: 50%;
+
+    /* background: #333;
+    border: 4px solid #666; */
+
+    touch-action: none;
+}
+
+
+/* ジョイスティック */
+#joystick-stick {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 182px;
+    height: 182px;
+
+    margin-left: -91px;
+    margin-top: -91px;
+
+    background-image: url("../images/joystick.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    /* 画像を選択・ドラッグできないようにする */
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+/* ジョイスティック値 */
+#joystick-value {
+    position: absolute;
+
+    left: 100px;
+    top: 370px;
+
+    color: white;
+
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+
+/* 非常停止ボタン */
+#emergency {
+    position: absolute;
+
+    right: 1000px;
+    bottom: 1200px;
+
+    width: 0px;
+    height: 0px;
+
+    user-select: none;
+
+    cursor: pointer;
+
+    /* position: absolute;
+
+    right: -50px;
+    bottom: 365px;
+
+    width: 680px;
+    height: 680px;
+
+    background-image: url("../images/emergency.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    user-select: none;
+    -webkit-user-drag: none;
+
+    cursor: pointer; */
+}

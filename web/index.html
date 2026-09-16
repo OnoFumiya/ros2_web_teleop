@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ROS2 Web Teleop</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- 画面全体 -->
+    <div id="gui">
+
+        <!-- 仮想GUIキャンバス -->
+        <div id="canvas">
+
+            <!-- 背景画像 -->
+            <img
+                id="background"
+                src="images/background.png"
+                alt=""
+            >
+
+
+            <!-- 接続状態 -->
+            <div id="connection-status">
+                <!-- WebSocket: DISCONNECTED -->
+            </div>
+
+
+            <!-- ジョイスティック -->
+            <div id="joystick">
+
+                <div id="joystick-base">
+                    <div id="joystick-stick"></div>
+                </div>
+
+            </div>
+
+
+            <!-- ジョイスティック値 -->
+            <div id="joystick-value">
+                <!-- X: 0.00<br>
+                Y: 0.00 -->
+            </div>
+
+
+            <!-- 非常停止ボタン -->
+            <!-- 後で画像を配置する -->
+            <div id="emergency">
+                <!-- <img
+                    src="images/emergency.png"
+                    alt="非常停止"
+                > -->
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <!-- WebSocket通信 -->
+    <script src="js/websocket.js"></script>
+
+    <!-- ジョイスティック -->
+    <script src="js/joystick.js"></script>
+
+    <!-- GUIの拡大縮小・位置調整 -->
+    <script src="js/gui.js"></script>
+
+</body>
+
+</html>
