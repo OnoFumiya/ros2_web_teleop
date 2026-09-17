@@ -135,7 +135,7 @@ body {
 
 /* 非常停止ボタン */
 #emergency {
-    position: absolute;
+    /* position: absolute;
 
     right: 1000px;
     bottom: 1200px;
@@ -145,9 +145,9 @@ body {
 
     user-select: none;
 
-    cursor: pointer;
+    cursor: pointer; */
 
-    /* position: absolute;
+    position: absolute;
 
     right: -50px;
     bottom: 365px;
@@ -163,5 +163,5 @@ body {
     user-select: none;
     -webkit-user-drag: none;
 
-    cursor: pointer; */
+    cursor: pointer;
 }

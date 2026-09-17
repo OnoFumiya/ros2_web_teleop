@@ -1,6 +1,6 @@
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
@@ -19,7 +19,7 @@ def generate_launch_description():
 
     topic_name_arg = DeclareLaunchArgument(
         "web_teleop_topic_name",
-        default_value="/cmd_vel",
+        default_value="/nekomimi_bot/cmd_vel",
         description="Topic name for the teleoperation commands."
     )
 
@@ -31,7 +31,7 @@ def generate_launch_description():
 
     port_arg = DeclareLaunchArgument(
         "web_teleop_port",
-        default_value="8000",
+        default_value="8080",
         description="port number for network."
     )
 
@@ -48,7 +48,7 @@ def generate_launch_description():
     )
 
     display_server = ExecuteProcess(
-        cmd=["python3", "-m", "http.server", "8080"],
+        cmd=["python3", "-m", "http.server", "8000"],
         cwd=os.path.join(pkg_share, "web"),
         output="screen",
     )
@@ -69,21 +69,22 @@ def generate_launch_description():
         ]
     )
 
-    rqt_view_node = Node(
-        package="rqt_image_view",
-        executable="rqt_image_view",
-        name="qrcode_viewer",
-        arguments=["/web_teleop_qrcode"],
-        condition=IfCondition(LaunchConfiguration("web_teleop_qrcode_view")),
-    )
+    # rqt_view_node = Node(
+    #     package="rqt_image_view",
+    #     executable="rqt_image_view",
+    #     name="qrcode_viewer",
+    #     arguments=["/web_teleop_qrcode"],
+    #     condition=IfCondition(LaunchConfiguration("web_teleop_qrcode_view")),
+    # )
 
     return LaunchDescription([
         namespace_arg,
-        block_config_arg,
+        topic_name_arg,
+        use_stamped_arg,
         port_arg,
         ui_bringup_arg,
         qrcode_view_arg,
         display_server,
         ros2_manager_node,
-        rqt_view_node,
+        # rqt_view_node,
     ])

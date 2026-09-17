@@ -11,6 +11,7 @@ class WebSocketServer:
     """
 
     def __init__(self, host="0.0.0.0", port=8080):
+        print(f"WebSocketServer initialized on {host}:{port}")
         self.host = host
         self.port = port
 
@@ -19,6 +20,12 @@ class WebSocketServer:
 
         # サーバー本体
         self.server = None
+
+        # 共有データ
+        self.data = {"type": "joystick", "x": 0.0, "y": 0.0}
+
+    def run(self):
+        asyncio.run(self.start())
 
     async def start(self):
         """
@@ -64,8 +71,6 @@ class WebSocketServer:
         GUIから受信したデータを処理する。
         """
 
-        print(f"Received: {message}")
-
         try:
             data = json.loads(message)
 
@@ -73,16 +78,8 @@ class WebSocketServer:
             print("Invalid JSON")
             return
 
-        # TODO:
-        # ここでGUIから送られてきたデータを処理する
-        #
-        # 例:
-        #
-        # if data["type"] == "joystick":
-        #     ...
-        #
-        # elif data["type"] == "emergency":
-        #     ...
+        self.data = data
+
 
     async def send_message(self, data):
         """
