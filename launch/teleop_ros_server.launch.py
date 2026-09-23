@@ -11,7 +11,7 @@ from launch.conditions import IfCondition
 def generate_launch_description():
     namespace_arg = DeclareLaunchArgument(
         "web_teleop_namespace",
-        default_value="nekomimi_bot",
+        default_value="",
         description="Namespace for the nodes"
     )
 
@@ -47,13 +47,13 @@ def generate_launch_description():
 
     max_linear_arg = DeclareLaunchArgument(
         "max_linear_velocity",
-        default_value="0.1",
+        default_value="0.3",
         description="Max Velocity of foward linear.[m/s]"
     )
 
     max_angular_arg = DeclareLaunchArgument(
         "max_angular_velocity",
-        default_value="0.65",
+        default_value="1.0",
         description="Max Angular radian of rotation (angular).[rad/s]"
     )
 
@@ -65,7 +65,7 @@ def generate_launch_description():
 
     min_angular_arg = DeclareLaunchArgument(
         "min_angular_velocity",
-        default_value="0.08",
+        default_value="0.1",
         description="Max Angular radian of rotation (angular).[rad/s]"
     )
 
