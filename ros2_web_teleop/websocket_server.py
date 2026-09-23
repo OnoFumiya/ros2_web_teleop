@@ -6,10 +6,6 @@ from websockets.server import ServerConnection
 
 
 class WebSocketServer:
-    """
-    スマートフォンのGUIとWebSocket通信を行うサーバー。
-    """
-
     def __init__(self, host="0.0.0.0", port=8080):
         print(f"WebSocketServer initialized on {host}:{port}")
         self.host = host
@@ -62,7 +58,6 @@ class WebSocketServer:
         finally:
             print("GUI disconnected")
 
-            # 現在の接続が切れた場合だけNoneにする
             if self.client == websocket:
                 self.client = None
 
@@ -92,17 +87,3 @@ class WebSocketServer:
         message = json.dumps(data)
 
         await self.client.send(message)
-
-
-async def main():
-
-    server = WebSocketServer(
-        host="0.0.0.0",
-        port=8080
-    )
-
-    await server.start()
-
-
-if __name__ == "__main__":
-    asyncio.run(main())

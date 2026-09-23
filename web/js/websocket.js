@@ -2,9 +2,12 @@ const statusElement =
     document.getElementById("connection-status");
 
 
-const websocket = new WebSocket(
-    "ws://192.168.1.29:8080"
-);
+const wsPort = 8080;
+const wsUrl = `ws://${window.location.hostname}:${wsPort}`;
+
+console.log(`Connecting to ${wsUrl}`);
+
+const websocket = new WebSocket(wsUrl);
 
 
 // ================================
