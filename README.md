@@ -118,9 +118,9 @@ Parameters Setting...
 
 ## Milestones
 
-[ ] 
-[ ] 
-[ ] 
+- [ ] 
+- [ ] 
+- [ ] 
 
 Please check the [Issue page][issues-url] for current bugs and feature requests.
 

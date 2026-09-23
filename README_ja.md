@@ -117,9 +117,9 @@ $ source ~/colcon_ws/install/setup.sh
 
 ## マイルストーン
 
-[ ] 
-[ ] 
-[ ] 
+- [ ] 
+- [ ] 
+- [ ] 
 
 Please check the [Issue page][issues-url] for current bugs and feature requests.
 
