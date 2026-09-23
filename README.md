@@ -8,7 +8,7 @@
 [![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
 
-# Blockly ROS2
+# ROS2 Web Teleop
 
 A ROS 2 web-based teleoperation package for controlling robots from a smartphone via a virtual joystick and WebSocket.
 
@@ -79,13 +79,13 @@ First, navigate to the `src` folder of your ROS 2 workspace.
     ```sh
     $ cd ~/colcon_ws/src
     ```
-Clone the ROS package `blockly_ros2` into the `src` folder.
+Clone the ROS package `ros2_web_teleop` into the `src` folder.
     ```sh
-    $ git clone -b lyrical-devel https://github.com/OnoFumiya/blockly_ros2.git
+    $ git clone -b lyrical-devel https://github.com/OnoFumiya/ros2_web_teleop.git
     ```
 Navigate into the cloned repository folder.
     ```sh
-    $ cd blockly_ros2
+    $ cd ros2_web_teleop
     ```
 Install the required dependencies.
     ```sh
