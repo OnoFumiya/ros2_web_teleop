@@ -75,28 +75,28 @@ First, prepare the following environment before proceeding to the installation s
 
 
 ### Installation
-First, navigate to the `src` folder of your ROS 2 workspace.
-    ```sh
-    $ cd ~/colcon_ws/src
-    ```
-Clone the ROS package `ros2_web_teleop` into the `src` folder.
-    ```sh
-    $ git clone -b lyrical-devel https://github.com/OnoFumiya/ros2_web_teleop.git
-    ```
-Navigate into the cloned repository folder.
-    ```sh
-    $ cd ros2_web_teleop
-    ```
-Install the required dependencies.
-    ```sh
-    $ bash install.sh
-    ```
-Build the package.
-    ```sh
-    $ cd ~/colcon_ws/
-    $ colcon build --symlink-install
-    $ source ~/colcon_ws/install/setup.sh
-    ```
+1. First, navigate to the `src` folder of your ROS 2 workspace.
+```sh
+$ cd ~/colcon_ws/src
+```
+2. Clone the ROS package `ros2_web_teleop` into the `src` folder.
+```sh
+$ git clone -b lyrical-devel https://github.com/OnoFumiya/ros2_web_teleop.git
+```
+3. Navigate into the cloned repository folder.
+```sh
+$ cd ros2_web_teleop
+```
+4. Install the required dependencies.
+```sh
+$ bash install.sh
+```
+5. Build the package.
+```sh
+$ cd ~/colcon_ws/
+$ colcon build --symlink-install
+$ source ~/colcon_ws/install/setup.sh
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

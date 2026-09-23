@@ -76,28 +76,28 @@
 
 
 ### インストール
-`src`フォルダへ移動
-    ```sh
-    $ cd ~/colcon_ws/src
-    ```
-本リポジトリを`src`直下にclone
-    ```sh
-    $ git clone -b lyrical-devel https://github.com/OnoFumiya/ros2_web_teleop.git
-    ```
-本リポジトリへ移動
-    ```sh
-    $ cd ros2_web_teleop
-    ```
-必要なライブラリをインストール
-    ```sh
-    $ bash install.sh
-    ```
-パッケージをビルド
-    ```sh
-    $ cd ~/colcon_ws/
-    $ colcon build --symlink-install
-    $ source ~/colcon_ws/install/setup.sh
-    ```
+1. `src`フォルダへ移動
+```sh
+$ cd ~/colcon_ws/src
+```
+2. 本リポジトリを`src`直下にclone
+```sh
+$ git clone -b lyrical-devel https://github.com/OnoFumiya/ros2_web_teleop.git
+```
+3. 本リポジトリへ移動
+```sh
+$ cd ros2_web_teleop
+```
+4. 必要なライブラリをインストール
+```sh
+$ bash install.sh
+```
+5. パッケージをビルド
+```sh
+$ cd ~/colcon_ws/
+$ colcon build --symlink-install
+$ source ~/colcon_ws/install/setup.sh
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
