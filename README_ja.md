@@ -105,23 +105,50 @@ $ source ~/colcon_ws/install/setup.sh
 ## 起動と使用方法
 パッケージのビルドが正常に完了したら、以下の手順で動作を確認できます。
 
+ポート番号の設定やTopic名など詳細に設定する必要がある場合は[こちら](#パラメータ設定)を参考に設定する。
 
+また、遠隔操作のデバイスを使用する場合、IPアドレスが同一となるネットワーク(同一Wi-Fi等)に設定する。
+
+※ネットワークのhostnameを検索する使用のため、ネットワークは必須となる。
+
+```sh
+$ ros2 launch ros2_web_teleop teleop_ros_server.launch.py
+```
+
+デフォルトの設定のまま起動した場合、UIのあるQRコードとそのQRコード先のサイトが表示される。
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # パラメータ設定
 
-パラメータ設定...
+Launchファイル上のパラメータとその設定は以下に示す。
+
+| パラメータ名  | 意味 | 型 |デフォルト値 |
+| ------------- | ------------- | ------------- | ------------- |
+| `web_teleop_namespace` | このノードのNameSpace. rqtのImageやTopic NameにもこのNameSpaceが付加される. | String | ""(空文字) |
+| `web_teleop_topic_name` | このノードからPublishするTopic名 | String | "cmd_vel" |
+| `web_teleop_use_stamped` | PublishするのはTwistStamped型またはTwist型か（TrueでTwistStamped）. | Bool | False |
+| `web_teleop_websocket_port` | Joystickの値をNodeとやり取りするための内部Port番号. Global IP アドレス内で他と競合しない値にする必要がある. (Defaultのままでうまく行かなかった場合に変えることを推奨) | Int | 7777 |
+| `web_teleop_http_port` | Joystickが表示されるためのPort番号. Global IP アドレス内で上記の`web_teleop_websocket_port`を含め、他と競合しない値にする必要がある. (Defaultのままでうまく行かなかった場合に変えることを推奨) | Int | 7000 |
+| `control_rate` | 1秒間に何度Publishするか. [Hz] | Int | 20 |
+| `max_linear_velocity` | Joystickの前後方向の傾きによる最高並進速度の絶対値. [m/s] | Double | 0.3 |
+| `max_angular_velocity` | Joystickの左右方向の傾きによる最高角速度の絶対値. [rad/s] | Double | 1.0 |
+| `min_linear_velocity` | 傾きが小さいときにある速度以下を無視する並進速度の絶対値. [m/s] | Double | 0.05 |
+| `min_angular_velocity` | 傾きが小さいときにある速度以下を無視する角速度の絶対値. [rad/s] | Double | 0.1 |
+| `web_teleop_ui_bringup` | 操作ができるサイトを表示するかどうか.  | Bool | True |
+| `web_teleop_qrcode_view` | 操作ができるサイトへ移動することができるURLのQRコードを表示するか. ※ | Bool | True |
+
+> [!NOTE]
+> ※QRコードを表示しない(False)とした場合でも、QRコードの画像とそのURLは、それぞれTransient Local(QoS)として、トピックに1回ずつ公開されます。
+> 公開先は、それぞれ`web_teleop_url_qrcode`(sensor_msgs/Image)および`web_teleop_url_link`(std_msgs/String)です。なおNameSpaceが適応されるため、NameSpace設定時はNameSpaceが付加される点に注意。
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## マイルストーン
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] 速度の即時入力をやめ現在速度と目標速度をならしでPublishするなどの処理を追加する
 
-Please check the [Issue page][issues-url] for current bugs and feature requests.
+現在のバグや機能要望については、[こちら][issues-url]をご確認ください。
 
 
 ## 参考文献

@@ -27,7 +27,7 @@ A ROS 2 web-based teleoperation package for controlling robots from a smartphone
       </ul>
     </li>
     <li><a href="#launch-and-usage">Launch and Usage</a></li>
-      <li><a href="#parameters-setting">Parameters Setting</a></li>
+      <li><a href="#parameter-settings">Parameters Setting</a></li>
     <li><a href="#milestone">Milestone</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -104,23 +104,49 @@ $ source ~/colcon_ws/install/setup.sh
 ## Launch and Usage
 Once the package has been successfully built, you can verify its operation using the following steps:
 
+If you need to configure detailed settings such as port numbers or topic names, refer to [this page](#parameter-settings) for instructions.
 
+Additionally, when using a remote-controlled device, ensure it is connected to the same network (such as the same Wi-Fi network) as the server.
+
+※A network connection is required because the system uses the network’s hostname for lookup.
+
+```sh
+$ ros2 launch ros2_web_teleop teleop_ros_server.launch.py
+```
+
+If you launch the application with the default settings, a QR code with a UI and the website linked to that QR code will be displayed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-# Parameters Setting
+# Parameter Settings
 
-Parameters Setting...
+The parameters in the Launch file and their settings are shown below.
 
+| Parameter Name  | Meaning | Type | Default Value |
+| ------------- | ------------- | ------------- | ------------- |
+| `web_teleop_namespace` | This node's namespace. This namespace is appended to rqt images and topic names. | String | ""(empty string) |
+| `web_teleop_topic_name` | The topic name published from this node | String | "cmd_vel" |
+| `web_teleop_use_stamped` | Whether to publish TwistStamped or Twist types (True for TwistStamped). | Bool | False |
+| `web_teleop_websocket_port` | Internal port number for exchanging joystick values with the Node. Must be a value that does not conflict with others within the global IP address range. (Recommended to change if the default does not work) | Int | 7777 |
+| `web_teleop_http_port` | Port number for displaying the joystick. Must be a value that does not conflict with other ports on the global IP address, including the `web_teleop_websocket_port` mentioned above. (Recommended to change if the default does not work) | Int | 7000 |
+| `control_rate` | Number of times to publish per second. [Hz] | Int | 20 |
+| `max_linear_velocity` | Absolute value of the maximum linear velocity based on the joystick's forward and backward tilt. [m/s] | Double | 0.3 |
+| `max_angular_velocity` | Absolute value of the maximum angular velocity resulting from the joystick's left-right tilt. [rad/s] | Double | 1.0 |
+| `min_linear_velocity` | Absolute value of the linear velocity at or below which values are ignored when the tilt is small. [m/s] | Double | 0.05 |
+| `min_angular_velocity` | Absolute value of the angular velocity at or below which values are ignored when the tilt is small. [rad/s] | Double | 0.1 |
+| `web_teleop_ui_bringup` | Whether to display the site where operations can be performed. | Bool | True |
+| `web_teleop_qrcode_view` | Whether to display a QR code for the URL that allows navigation to the site where operations can be performed. ※ | Bool | True |
+
+> [!NOTE]
+> ※Even if you set “Do not display QR code” (False), the QR code image and its URL will each be published to the topic once as Transient Local (QoS).
+> They are published to `web_teleop_url_qrcode` (sensor_msgs/Image) and `web_teleop_url_link` (std_msgs/String), respectively. Note that since the namespace is applied, the namespace will be appended when configuring the namespace.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Milestones
 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] Stop allowing immediate speed input and add processing such as publishing the current speed and target speed using a smooth transition.
 
 Please check the [Issue page][issues-url] for current bugs and feature requests.
 
@@ -140,5 +166,3 @@ Please check the [Issue page][issues-url] for current bugs and feature requests.
 [issues-url]: https://github.com/OnoFumiya/ros2_web_teleop/issues
 [license-shield]: https://img.shields.io/github/license/OnoFumiya/ros2_web_teleop.svg?style=for-the-badge
 [license-url]: LICENSE
-
-```
