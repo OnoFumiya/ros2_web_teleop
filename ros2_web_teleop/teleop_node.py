@@ -5,7 +5,7 @@ from rclpy.action import ActionClient
 import os
 # import time
 import threading
-from subprocess import Popen
+from subprocess import Popen, DEVNULL
 
 from .websocket_server import WebSocketServer
 from . import network_address_manager
@@ -90,7 +90,7 @@ class VelocityPublisher(Node):
         url = "http://" + str(network_address_manager.get_ipaddress()) + ":" + str(self.http_port)
         qrcode_file = os.path.join(get_package_share_directory("ros2_web_teleop"), "img", "qrcode.png")
 
-        print("\033[34mGUI URL: " + str(url) + "\033[0m")
+        print("\033[34mGUI URL: " + str(url) + "\033[0m", flush=True)
 
         img = network_address_manager.create_qrcode(url, qrcode_file)
         cv_img = np.array(img).astype(np.uint8) * 255
@@ -101,7 +101,7 @@ class VelocityPublisher(Node):
         self.url_qr_pub.publish(ros_img)
 
         if (self.get_parameter("ui_bringup").get_parameter_value().bool_value):
-            Popen(["xdg-open", url]) # bringup the engine
+            Popen(["xdg-open", url], stderr=DEVNULL) # bringup the engine
 
 
     def control_callback(self):
