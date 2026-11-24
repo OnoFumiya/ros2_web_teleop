@@ -3,9 +3,9 @@
 <package format="3">
   <name>ros2_web_teleop</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>ROS 2 web teleoperation package</description>
   <maintainer email="fumiyaono.choi@gmail.com">OnoFumiya</maintainer>
-  <license>TODO: License declaration</license>
+  <license>BSD-3-Clause</license>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
